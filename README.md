@@ -11,8 +11,9 @@ It leverages justplainwilly's b2deploy-task in the pom file to enable easy deplo
 a blackboard development server.
 
 There are three steps to deploy:
-1. The Blackboard server has **[Starting Block](https://behind.blackboard.com/s/developer/dlc/download.aspx?d=1335)** installed
+
+1. The Blackboard server has **[Starting Block](http://behind.blackboard.com/downloads/details.aspx?d=1669)** installed
 1. The bbhost property is pointed at the correct server
 1. Finally, run `mvn install antrun:run`
 
-This project was created for the bbmd/BasicMavenB2Tutorial.md
+This project was created for the [BasicMavenB2Tutorial](https://github.com/justinwrobel/bbmd/blob/master/BasicMavenB2Tutorial.md)

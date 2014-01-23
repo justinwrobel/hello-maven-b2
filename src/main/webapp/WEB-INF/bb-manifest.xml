@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest xmlns="http://www.blackboard.com/bb-manifest-plugin"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.blackboard.com/bb-manifest-plugin http://fibbba.blackboard.com/xsd/bb-manifest-plugin.xsd">
+	<plugin>
+		<name value="hello-world-b2" />
+		<description value="My first B2 - Hello World!" />
+		<default-locale value="en_US" />
+		<webapp-type value="javaext"/>
+		<!-- handle value will be part of the B2's url please see -->
+		<!-- https://github.com/justinwrobel/bbmd/blob/master/B2UrlAnatomy.md -->
+		<!-- for more information -->
+		<handle value="hello-world-b2" />
+		<version value="0.0.1" />
+		<requires>
+				<bbversion value="8.0" />
+		</requires>
+		
+		<!-- vendor id will be part of the B2's url please see -->
+		<!-- https://github.com/justinwrobel/bbmd/blob/master/B2UrlAnatomy.md -->
+		<!-- for more information -->
+		<vendor>
+			<id value="jw" /> <!-- id is limited to 4 chars -->
+			<name value="justinwrobel" />
+			<url value="http://www.githut.com/justinwrobel" />
+		</vendor>
+		
+		<!-- This application will be available at -->
+		<!-- http://${bbhost}/webapps/jw-hello-world-b2-BBLEARN -->
+		
+		<!-- the application-defs element is where the integration points between -->
+		<!-- Blackboard and the webapp are defined. -->
+		<application-defs>
+			<application handle="hello-world-system" type="shared"
+				use-ssl="false" name="Hello World to the System">
+				<links>
+					<link>
+						<type value="system_tool" />
+						<name value="Hello World System Link" />
+						<description value="Hello World System Description" />
+						<url value="hello.jsp" />
+					</link>
+				</links>
+			</application>
+		</application-defs>
+	</plugin>
+</manifest>

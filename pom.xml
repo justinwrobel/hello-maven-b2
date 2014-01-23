@@ -1,0 +1,59 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.justinwrobel</groupId>
+	<artifactId>hello-world-b2</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>Hello World B2</name>
+  
+	<properties>
+		<blackboard.platform-version>9.1.110082.0</blackboard.platform-version>
+		<bbhost>localhost:9876</bbhost>
+	</properties>
+	
+	<repositories>
+		<repository>
+			<id>blackboard-repo</id>
+			<name>Blackboard Repository</name>
+			<url>https://bbprepo.blackboard.com/content/repositories/releases/</url>
+		</repository>
+	</repositories>
+	
+	<pluginRepositories>
+		<pluginRepository>
+			<id>blackboard-repo</id>
+			<name>Blackboard Repository</name>
+			<url>https://bbprepo.blackboard.com/content/repositories/releases/</url>
+		</pluginRepository>
+	</pluginRepositories>
+	
+	<build>
+		<plugins>
+			<!-- The following task automatically uploads the war file to blackboard. -->
+			<!-- It is called by executing 'mvn antrun:run' -->
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.5</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.oscelot</groupId>
+						<artifactId>b2deploy-task</artifactId>
+						<version>0.1.0</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<!-- The b2deploy task automatically deploys the war file onto the -->
+					<!-- development server so you don't have to. -->
+					<target>
+						<taskdef name="b2deploy" classpathref="maven.plugin.classpath" classname="org.oscelot.ant.B2DeployTask" />
+						<b2deploy localfilepath="${project.build.directory}/${project.build.finalName}.war" host="${bbhost}" courseorgavailable="true" clean="true" />
+					</target>
+					<!-- Requires "Starting Block" installed on the server. -->
+					<!-- Download the war file from  -->
+					<!-- http://behind.blackboard.com/downloads/details.aspx?d=1669 -->
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	
+</project>
